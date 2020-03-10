@@ -43,8 +43,17 @@ export default {
     'bootstrap-vue/nuxt',
     '@nuxtjs/pwa',
     // Doc: https://github.com/nuxt-community/dotenv-module
-    '@nuxtjs/dotenv'
+    '@nuxtjs/dotenv',
+    'nuxt-validate'
   ],
+  nuxtValidate: {
+    lang: 'id'
+    // nuxti18n: {
+    //   locale: {
+    //     'zh-CN': 'zh_CN'
+    //   }
+    // }
+  },
   /*
    ** Build configuration
    */
@@ -53,5 +62,8 @@ export default {
      ** You can extend webpack config here
      */
     extend(config, ctx) {}
+  },
+  server: {
+    port: 14045 // default: 3000
   }
 }
