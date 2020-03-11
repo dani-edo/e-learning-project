@@ -5,7 +5,18 @@
       <div>
         <b-row>
           <b-col>
-            <Card :title="cardTitle" :description="cardDescription" />
+            <Card
+              :title="cardTitle"
+              :description="cardDescription"
+              :card-link="true"
+            />
+          </b-col>
+          <b-col>
+            <Card
+              :title="cardTitle"
+              :description="cardDescription"
+              :card-link="true"
+            />
           </b-col>
         </b-row>
       </div>
@@ -24,7 +35,7 @@ export default {
   },
   data() {
     return {
-      cardTitle: 'How to make a baby',
+      cardTitle: 'How to make a ...',
       cardDescription:
         'Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci excepturi libero autem aut, tempora facere nihil, obcaecati deserunt laboriosam, reprehenderit dolore aperiam ipsam quis consequuntur reiciendis fugit voluptate veritatis. Labore.'
     }

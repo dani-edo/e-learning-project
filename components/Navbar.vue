@@ -1,17 +1,15 @@
 <template>
   <div>
     <b-navbar toggleable="lg" type="dark" variant="info">
-      <b-navbar-brand href="#">Home</b-navbar-brand>
+      <b-navbar-brand href="/dashboard">Home</b-navbar-brand>
 
       <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
-      <b-collapse id="nav-collapse" is-nav>
-        <!-- Right aligned nav items -->
-        <b-navbar-nav class="ml-auto">
-          <b-navbar-brand href="#">Profile</b-navbar-brand>
-          <b-navbar-brand href="#">Logout</b-navbar-brand>
-        </b-navbar-nav>
-      </b-collapse>
+      <!-- Right aligned nav items -->
+      <b-navbar-nav class="ml-auto">
+        <b-navbar-brand href="#">Profile</b-navbar-brand>
+        <b-navbar-brand href="/">Logout</b-navbar-brand>
+      </b-navbar-nav>
     </b-navbar>
   </div>
 </template>

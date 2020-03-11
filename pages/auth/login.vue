@@ -54,6 +54,9 @@ export default {
   },
   methods: {
     onSubmit() {
+      if (this.form.email === 'dani@edo.com') {
+        this.$router.push('/dashboard')
+      }
       return console.log(this.form.email, this.form.password)
     }
   }
