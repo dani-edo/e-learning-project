@@ -55,4 +55,7 @@ export default {
 .links {
   padding-top: 15px;
 }
+a:hover {
+  text-decoration: none;
+}
 </style>
