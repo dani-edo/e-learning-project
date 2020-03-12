@@ -17,6 +17,7 @@ export default {
   components: {
     Navbar
   },
+  middleware: 'auth',
   data() {
     return {
       cardTitle: 'How to make a coffee',

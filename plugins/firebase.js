@@ -12,7 +12,7 @@ const firebaseConfig = {
   appId: '1:975585724650:web:30f32097ee878994b12f93'
 }
 // Initialize Firebase
-if (!firebase.app.length) {
+if (!firebase.apps.length) {
   firebase.initializeApp(firebaseConfig)
 }
 

@@ -34,6 +34,7 @@ export default {
     Navbar,
     Card
   },
+  middleware: 'auth',
   data() {
     return {
       cards: [

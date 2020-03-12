@@ -2,7 +2,7 @@
   <div class="container">
     <b-card
       overlay
-      img-src="https://picsum.photos/900/250/?image=3"
+      img-src="~/assets/login.jpg"
       img-alt="Card Image"
       text-variant="white"
       title="Login"
@@ -27,11 +27,9 @@
               placeholder="Enter password"
             ></b-input>
           </b-form-group>
-          <!-- <b-form-text>
-                Your password must be 8-20 characters long, contain letters and
-                numbers, and must not contain spaces, special characters, or
-                emoji.
-              </b-form-text> -->
+          <b-form-invalid-feedback class="d-block">
+            {{ form.error }}
+          </b-form-invalid-feedback>
           <b-button type="submit" variant="primary" class="mt-3"
             >Submit</b-button
           >
@@ -42,22 +40,38 @@
 </template>
 
 <script>
+import * as firebase from 'firebase/app'
+import 'firebase/auth'
+
 export default {
   name: 'Login',
   data() {
     return {
       form: {
         email: '',
-        password: ''
+        password: '',
+        error: ''
       }
+    }
+  },
+  created() {
+    const loggedIn = localStorage.getItem('loggedIn')
+    if (loggedIn) {
+      this.$router.push('/dashboard')
     }
   },
   methods: {
     onSubmit() {
-      if (this.form.email === 'dani@edo.com') {
-        this.$router.push('/dashboard')
-      }
-      return console.log(this.form.email, this.form.password)
+      firebase
+        .auth()
+        .signInWithEmailAndPassword(this.form.email, this.form.password)
+        .then((data) => {
+          localStorage.setItem('loggedIn', true)
+          this.$router.push('/dashboard')
+        })
+        .catch((error) => {
+          this.form.error = error.message
+        })
     }
   }
 }
@@ -74,7 +88,7 @@ export default {
 }
 .login-container {
   max-width: 600px;
-  height: 300px;
+  height: 350px;
   filter: drop-shadow(2px 4px 6px rgba(46, 46, 46, 0.5));
 }
 img {
