@@ -3,7 +3,7 @@
     <div>
       <logo />
       <h1 class="title">
-        e-learning-project
+        tutodiv
       </h1>
       <div class="links">
         <a href="/auth/login" class="button--green">
