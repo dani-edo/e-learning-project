@@ -27,24 +27,42 @@
               placeholder="Enter password"
             ></b-input>
           </b-form-group>
-          <b-form-group label="Re enter password" label-for="password">
-            <b-input
-              id="repassword"
-              v-model="form.rePassword"
-              type="password"
-              placeholder="Enter password"
-            ></b-input>
-          </b-form-group>
+          <b-form-invalid-feedback class="d-block">
+            {{ form.error }}
+          </b-form-invalid-feedback>
           <b-button type="submit" variant="primary" class="mt-3"
             >Register</b-button
           >
         </b-form>
+        <b-form-text class="mt-3">
+          Already have an account?
+          <br />
+          Login here. <nuxt-link to="/auth/login"> here</nuxt-link>.
+        </b-form-text>
       </b-card-text>
     </b-card>
+    <b-modal
+      ref="success-modal"
+      v-model="shownModal"
+      hide-footer
+      centered
+      hide-header
+    >
+      <div class="d-block text-center">
+        <h3>Success!</h3>
+        <p>Check your email address</p>
+      </div>
+      <b-button class="mt-3" variant="outline-info" block @click="hideModal"
+        >OK</b-button
+      >
+    </b-modal>
   </div>
 </template>
 
 <script>
+import * as firebase from 'firebase/app'
+import 'firebase/auth'
+
 export default {
   name: 'Register',
   data() {
@@ -52,13 +70,54 @@ export default {
       form: {
         email: '',
         password: '',
-        rePassword: ''
+        error: ''
+      },
+      shownModal: false
+    }
+  },
+  watch: {
+    shownModal(value) {
+      if (!value) {
+        this.$router.push('/')
       }
     }
   },
+  created() {
+    this.firebaseAuth()
+  },
   methods: {
     onSubmit() {
-      return console.log(this.form.email, this.form.password)
+      firebase
+        .auth()
+        .createUserWithEmailAndPassword(this.form.email, this.form.password)
+        .then((user) => {
+          console.log(user)
+          firebase
+            .auth()
+            .currentUser.sendEmailVerification()
+            .then(function() {
+              console.log('email verifivation sent')
+            })
+            .catch(function(error) {
+              console.log(error)
+            })
+          this.showModal()
+        })
+        .catch((error) => {
+          this.form.error = error.message
+        })
+    },
+    showModal() {
+      this.$refs['success-modal'].show()
+    },
+    hideModal() {
+      this.$refs['success-modal'].hide()
+    },
+    firebaseAuth() {
+      const loggedIn = localStorage.getItem('loggedIn')
+      if (loggedIn) {
+        this.$router.push('/dashboard')
+      }
     }
   }
 }
@@ -76,7 +135,7 @@ export default {
 .login-container {
   color: #350f0e !important;
   max-width: 600px;
-  height: 400px;
+  height: 350px;
   filter: drop-shadow(2px 4px 6px rgba(46, 46, 46, 0.5));
 }
 img {

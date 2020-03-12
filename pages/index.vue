@@ -9,6 +9,9 @@
         <a href="/auth/login" class="button--green">
           Login
         </a>
+        <a href="/auth/register" class="button--green">
+          Register
+        </a>
       </div>
     </div>
   </div>
