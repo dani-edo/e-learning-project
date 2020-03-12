@@ -1,17 +1,19 @@
-import { firebase } from 'firebase'
+import * as firebase from 'firebase/app'
 import 'firebase/auth'
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: 'AIzaSyAWKxLNGaO6QRl6yt9_2E_4um3uN3O-kLw',
-  authDomain: 'auth-dani-edo.firebaseapp.com',
-  databaseURL: 'https://auth-dani-edo.firebaseio.com',
-  projectId: 'auth-dani-edo',
-  storageBucket: 'auth-dani-edo.appspot.com',
-  messagingSenderId: '364844543107',
-  appId: '1:364844543107:web:d7eeb9d6b65449a598bfb6'
+  apiKey: 'AIzaSyBW_CxONuI66QaIW7rfQJkhHwWHfjDXGBA',
+  authDomain: 'tutodiv-edo.firebaseapp.com',
+  databaseURL: 'https://tutodiv-edo.firebaseio.com',
+  projectId: 'tutodiv-edo',
+  storageBucket: 'tutodiv-edo.appspot.com',
+  messagingSenderId: '975585724650',
+  appId: '1:975585724650:web:30f32097ee878994b12f93'
 }
 // Initialize Firebase
-firebase.initializeApp(firebaseConfig)
+if (!firebase.app.length) {
+  firebase.initializeApp(firebaseConfig)
+}
 
 export default firebase

@@ -4,7 +4,7 @@
     <b-embed
       type="iframe"
       aspect="16by9"
-      src="https://www.youtube.com/embed/RFcuNI33Oq4"
+      :src="'https://www.youtube.com/embed/' + $route.params.id"
       allowfullscreen
     ></b-embed>
   </div>

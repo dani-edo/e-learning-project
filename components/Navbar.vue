@@ -7,7 +7,6 @@
     <!-- Right aligned nav items -->
     <b-collapse id="nav-collapse" is-nav>
       <b-navbar-nav class="ml-auto">
-        <b-navbar-brand href="#">Profile</b-navbar-brand>
         <b-navbar-brand href="/">Logout</b-navbar-brand>
       </b-navbar-nav>
     </b-collapse>

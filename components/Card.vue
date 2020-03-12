@@ -1,6 +1,6 @@
 <template>
   <div>
-    <nuxt-link :to="hrefLink">
+    <nuxt-link :to="hrefLink + '/' + videoLink">
       <b-card
         :img-src="imageLink"
         text-variant="white"
@@ -41,6 +41,10 @@ export default {
     hrefLink: {
       type: String,
       default: '/'
+    },
+    videoLink: {
+      type: String,
+      default: ''
     }
   }
 }

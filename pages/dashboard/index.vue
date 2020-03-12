@@ -15,6 +15,7 @@
               :title="item.cardTitle"
               :description="item.cardDescription"
               :image-link="item.imageLink"
+              :video-link="item.videoLink"
               :card-link="true"
             />
           </b-col>
@@ -42,7 +43,8 @@ export default {
             'Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci excepturi libero autem aut, tempora facere nihil, obcaecati deserunt laboriosam, reprehenderit dolore aperiam ipsam quis consequuntur reiciendis fugit voluptate veritatis. Labore.',
           hrefLink: '/dashboard/detail',
           imageLink:
-            'https://images.unsplash.com/photo-1510279931157-4ca63af8a363?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjkwNjAxfQ'
+            'https://images.unsplash.com/photo-1510279931157-4ca63af8a363?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjkwNjAxfQ',
+          videoLink: 'RFcuNI33Oq4'
         },
         {
           cardTitle: 'How to make a tea',
@@ -50,7 +52,8 @@ export default {
             'Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci excepturi libero autem aut, tempora facere nihil, obcaecati deserunt laboriosam, reprehenderit dolore aperiam ipsam quis consequuntur reiciendis fugit voluptate veritatis. Labore.',
           hrefLink: '/dashboard/detail',
           imageLink:
-            'https://images.unsplash.com/photo-1558160074-4d7d8bdf4256?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max&ixid=eyJhcHBfaWQiOjkwNjAxfQ'
+            'https://images.unsplash.com/photo-1558160074-4d7d8bdf4256?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max&ixid=eyJhcHBfaWQiOjkwNjAxfQ',
+          videoLink: 'le6vodQGeVI'
         }
       ]
     }
@@ -67,9 +70,9 @@ export default {
   align-items: center;
   text-align: center;
 }
-@media (max-width: 768px) {
+@media (max-width: 425px) {
   .container {
-    margin-top: 115px;
+    margin-top: 80px;
   }
 }
 </style>

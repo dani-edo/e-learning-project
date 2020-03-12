@@ -44,18 +44,18 @@ export default {
   letter-spacing: 1px;
 }
 
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
-
 .links {
   padding-top: 15px;
 }
 a:hover {
   text-decoration: none;
+}
+@media (max-width: 425px) {
+  .title {
+    font-size: 3.5rem;
+  }
+  .NuxtLogo {
+    width: 11rem;
+  }
 }
 </style>
