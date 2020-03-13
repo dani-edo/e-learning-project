@@ -89,7 +89,6 @@ export default {
         .auth()
         .createUserWithEmailAndPassword(this.form.email, this.form.password)
         .then((user) => {
-          console.log(user)
           firebase
             .auth()
             .currentUser.sendEmailVerification()
@@ -99,6 +98,7 @@ export default {
             .catch(function(error) {
               console.log(error)
             })
+          firebase.auth().signOut()
           this.showModal()
         })
         .catch((error) => {
