@@ -82,9 +82,7 @@ export default {
       }
     }
   },
-  created() {
-    this.firebaseAuth()
-  },
+  middleware: 'loggedInCheck',
   methods: {
     onSubmit() {
       firebase
@@ -112,12 +110,6 @@ export default {
     },
     hideModal() {
       this.$refs['success-modal'].hide()
-    },
-    firebaseAuth() {
-      const loggedIn = localStorage.getItem('loggedIn')
-      if (loggedIn) {
-        this.$router.push('/dashboard')
-      }
     }
   }
 }

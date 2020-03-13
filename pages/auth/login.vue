@@ -69,9 +69,7 @@ export default {
       shownModal: false
     }
   },
-  created() {
-    this.firebaseAuth()
-  },
+  middleware: 'loggedInCheck',
   methods: {
     onSubmit() {
       firebase
@@ -79,7 +77,6 @@ export default {
         .signInWithEmailAndPassword(this.form.email, this.form.password)
         .then((data) => {
           if (data.user.emailVerified) {
-            localStorage.setItem('loggedIn', true)
             this.$router.push('/dashboard')
           } else {
             this.form.error =
@@ -97,12 +94,6 @@ export default {
     },
     hideModal() {
       this.$refs['error-modal'].hide()
-    },
-    firebaseAuth() {
-      const loggedIn = localStorage.getItem('loggedIn')
-      if (loggedIn) {
-        this.$router.push('/dashboard')
-      }
     }
   }
 }

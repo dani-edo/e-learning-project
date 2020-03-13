@@ -3,8 +3,10 @@ import 'firebase/auth'
 
 export default ({ redirect }) => {
   firebase.auth().onAuthStateChanged((user) => {
-    if (!user) {
-      return redirect('/auth/login')
+    if (user !== null) {
+      if (user.emailVerified) {
+        return redirect('/dashboard')
+      }
     }
   })
 
