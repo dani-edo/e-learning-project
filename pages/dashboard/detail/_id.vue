@@ -17,14 +17,7 @@ export default {
   components: {
     Navbar
   },
-  middleware: 'auth',
-  data() {
-    return {
-      cardTitle: 'How to make a coffee',
-      cardDescription:
-        'Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci excepturi libero autem aut, tempora facere nihil, obcaecati deserunt laboriosam, reprehenderit dolore aperiam ipsam quis consequuntur reiciendis fugit voluptate veritatis. Labore.'
-    }
-  }
+  middleware: 'auth'
 }
 </script>
 
