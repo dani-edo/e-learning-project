@@ -19,6 +19,12 @@
               :card-link="true"
             />
           </b-col>
+          <b-col class="mb-3">
+            <video id="videoPlayer" class="w-100" controls>
+              <source :src="firebaseVideoLink" type="video/mp4" />
+              Your browser does not support HTML5 video.
+            </video>
+          </b-col>
         </b-row>
       </div>
     </div>
@@ -26,6 +32,9 @@
 </template>
 
 <script>
+import * as firebase from 'firebase/app'
+import 'firebase/storage'
+
 import Navbar from '~/components/Navbar'
 import Card from '~/components/Card'
 
@@ -56,11 +65,30 @@ export default {
             'https://images.unsplash.com/photo-1558160074-4d7d8bdf4256?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max&ixid=eyJhcHBfaWQiOjkwNjAxfQ',
           videoLink: 'le6vodQGeVI'
         }
-      ]
+      ],
+      firebaseVideoLink: ''
     }
+  },
+  async mounted() {
+    await firebase
+      .storage()
+      .ref(
+        'videos/Queen + Adam Lambert - These Are The Days Of Our Lives (Live at Summer Sonic 2014).mp4'
+      )
+      .getDownloadURL()
+      .then((data) => {
+        this.firebaseVideoLink = data
+      })
+    await document.getElementById('videoPlayer').load()
   }
 }
 </script>
+
+<style scoped>
+.container {
+  margin-top: 70px;
+}
+</style>
 
 <style>
 .container {
