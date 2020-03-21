@@ -20,8 +20,14 @@
             />
           </b-col>
           <b-col class="mb-3">
-            <video id="videoPlayer" class="w-100" controls>
-              <source :src="firebaseVideoLink" type="video/mp4" />
+            <video
+              v-for="(video, index) in videoData"
+              id="videoPlayer"
+              :key="index"
+              class="w-100"
+              controls
+            >
+              <source :src="video" type="video/mp4" />
               Your browser does not support HTML5 video.
             </video>
           </b-col>
@@ -34,6 +40,7 @@
 <script>
 import * as firebase from 'firebase/app'
 import 'firebase/storage'
+import 'firebase/database'
 
 import Navbar from '~/components/Navbar'
 import Card from '~/components/Card'
@@ -66,20 +73,35 @@ export default {
           videoLink: 'le6vodQGeVI'
         }
       ],
-      firebaseVideoLink: ''
+      firebaseVideoLink: '',
+      videoData: []
     }
   },
-  async mounted() {
-    await firebase
-      .storage()
-      .ref(
-        'videos/Queen + Adam Lambert - These Are The Days Of Our Lives (Live at Summer Sonic 2014).mp4'
-      )
-      .getDownloadURL()
-      .then((data) => {
-        this.firebaseVideoLink = data
+  mounted() {
+    this.downloadFiles()
+  },
+  methods: {
+    downloadFiles() {
+      const videoRef = firebase
+        .database()
+        .ref()
+        .child('videos')
+      videoRef.on('value', (snap) => {
+        snap.forEach((snap) => {
+          const value = snap.val()
+          firebase
+            .storage()
+            .ref(value.location + value.name)
+            .getDownloadURL()
+            .then((data) => {
+              this.videoData.push(data)
+            })
+            .catch((error) => {
+              console.log('error', error)
+            })
+        })
       })
-    await document.getElementById('videoPlayer').load()
+    }
   }
 }
 </script>
