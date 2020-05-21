@@ -6,6 +6,11 @@ With this application, you can learn online by registering first on the register
 
 This application supports PWA (Progressive Web App), and therefore is very optimal for use on mobile devices.
 
+## Features
+Authentication (Login / Register) with email verification<br />
+Progressive Web App (Opimal for mobile devices)<br />
+Cloudbase database (Firebase)
+
 ## Dependencies
 ```
 "@nuxtjs/dotenv": "^1.4.0",
