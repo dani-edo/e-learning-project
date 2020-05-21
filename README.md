@@ -9,6 +9,7 @@ This application supports PWA (Progressive Web App), and therefore is very optim
 ## Features
 Authentication (Login / Register) with email verification<br />
 Progressive Web App (Opimal for mobile devices)<br />
+Form Validation<br />
 Cloudbase database (Firebase)
 
 ## Dependencies
